@@ -26,6 +26,10 @@
     <%= form.date_select :date%>
   </div>
   <br>
+   <div class="field form-group">
+    <%= form.number_field :user_id, id: :event_user_id, value: current_user.id, type: :hidden %>
+  </div>
+  <br>
   <div class="actions">
     <%= form.submit %>
   </div>

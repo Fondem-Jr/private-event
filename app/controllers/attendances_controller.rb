@@ -1,6 +1,6 @@
 class AttendancesController < ApplicationController
     def index
-        @attendances = Attendance.all
+        @attendances = Attendance.new
     end
     def create
         @event = current_user.attended_events.find_by_id(params[:attended_event_id])

@@ -18,11 +18,13 @@
         <td><%= event.title %></td>
         <td><%= event.description %></td>
         <td><%= event.date %></td>
+        <td><%= link_to 'Attend', attendances_path %></td>
         <td><%= link_to 'Show', event %></td>
         <td><%= link_to 'Edit', edit_event_path(event) %></td>
         <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
       <% end %>
+    
     <% end %>
   </tbody>
 </table>

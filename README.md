@@ -8,9 +8,10 @@ This project uses devise gem to create the authentication in Ruby on Rails. We e
 
 ## Screenshots
 <img src="lib\assets\private-events-home.PNG" width="100%">
-<img src="lib\assets\private-events-signin.PNG" width="45%">
-<img src="lib\assets\private-events-signup.PNG" width="50%">
-
+<div style="display: flex; justify-content: center;">
+<img src="lib\assets\private-events-signin.PNG" width="43%">
+<img src="lib\assets\private-events-signup.PNG" width="49%">
+</div>
 
 ## Built with
 

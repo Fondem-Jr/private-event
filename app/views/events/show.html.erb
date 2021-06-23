@@ -12,4 +12,6 @@
 
 <p id="notice"><%= notice %></p>
 
+<%= link_to 'Register Attendance with your current account', attendances_path(event_id: params[:id], user_id: current_user.id), method: :post %> 
+
 

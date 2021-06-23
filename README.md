@@ -7,7 +7,7 @@ In this project, we build a private event web app where members can register att
 This project uses devise gem to create the authentication in Ruby on Rails. We encourage you to use it because it's the easiest way to make a complete authentication, and you can customize it if you want to do it.
 
 ## Screenshots
-![screenshot1](lib\assets\private-events-home.PNG)
+<img src="lib\assets\private-events-home.PNG" width="100%">
 <img src="lib\assets\private-events-signin.PNG" width="45%">
 <img src="lib\assets\private-events-signup.PNG" width="50%">
 

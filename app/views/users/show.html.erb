@@ -1,8 +1,8 @@
-<div class="alert alert-info"> Go to <strong>show</strong> for any event to <strong>register your attendance </strong> :) </div>
+<h1 class="text-center py-5">Your past and upcoming events created </h1>
 
-<%= link_to  'Go to see past and upcoming events' ,past_upcoming_events_path %>
+<%= link_to  'Back', root_path %>
 
-<h2 class="text-center text-muted"> Upcoming Events </h2>
+<h2 class="text-center text-muted"> Your Upcoming Events </h2>
 
 <table class="table table-hover table-bordered">
   <thead class="table-dark">
@@ -17,7 +17,7 @@
 
  <tbody>
     
-    <%  @upcoming_events.each do |event| %>
+    <%  @events.each do |event| %>
 
     <% if event.date >= Time.now %>
 
@@ -26,7 +26,11 @@
         <td><%= event.title %></td>
         <td><%= event.description %></td>
         <td><%= event.date %></td>
-        <td><%= Attendance.where(event_id: event.id).count %></td>
+        <% if Time.now > event.date %>
+          <td> Not available </td>
+        <% else %>
+          <td><%= Attendance.where(event_id: event.id).count %></td>
+        <% end %>
         <td><%= link_to 'Show', event %></td>
         <% if event.user_id == current_user.id %>
         <td><%= link_to 'Edit', edit_event_path(event) %></td>
@@ -44,7 +48,7 @@
 <% end %>
 </table>
 
-<h2 class="text-center text-muted"> Past Events </h2>
+<h2 class="text-center text-muted"> Your Past Events </h2>
 
 <table class="table table-hover table-bordered">
   <thead class="table-dark">
@@ -59,7 +63,7 @@
 
  <tbody>
     
-    <% @past_events.each do |event| %>
+    <% @events.each do |event| %>
 
     <% if event.date < Time.now %>
 
@@ -67,8 +71,12 @@
       <tr>
         <td><%= event.title %></td>
         <td><%= event.description %></td>
-        <td><%= event.date %></td>        
-        <td> Not available </td>
+        <td><%= event.date %></td>
+        <% if Time.now > event.date %>
+          <td> Not available </td>
+        <% else %>
+          <td><%= Attendance.where(event_id: event.id).count %></td>
+        <% end %>
         <td><%= link_to 'Show', event %></td>
         <% if event.user_id == current_user.id %>
         <td><%= link_to 'Edit', edit_event_path(event) %></td>
@@ -85,8 +93,3 @@
 
 <% end %>
 </table>
-
-<br>
-
-<%= link_to 'New Event', new_event_path %>
-

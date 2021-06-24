@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @events = Event.all.where(user_id: current_user.id)
+    @events = Event.all
   end
 
   def create

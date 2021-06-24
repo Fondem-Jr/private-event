@@ -17,9 +17,8 @@
 
  <tbody>
     
-    <%  @events.each do |event| %>
+    <%  @upcoming_events.each do |event| %>
 
-    <% if event.date >= Time.now %>
 
       <% if current_user %>
       <tr>
@@ -42,7 +41,7 @@
       </tr>
       <% end %>
     
-    <% end %>
+   
   </tbody>
 
 <% end %>
@@ -63,9 +62,9 @@
 
  <tbody>
     
-    <% @events.each do |event| %>
+    <% @past_events.each do |event| %>
 
-    <% if event.date < Time.now %>
+    
 
       <% if current_user %>
       <tr>
@@ -86,7 +85,7 @@
         <td></td>
         <% end %>
       </tr>
-      <% end %>
+      
     
     <% end %>
   </tbody>

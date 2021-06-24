@@ -4,8 +4,7 @@
   <hr class="my-4">
   <p><strong>Date:</strong> <%= @event.date %>.</p>
   <p class="lead">
-    <%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+    <%= link_to 'Back', events_path %>
   </p>
 </div>
 
@@ -14,4 +13,13 @@
 
 <%= link_to 'Register Attendance with your current account', attendances_path(event_id: params[:id], user_id: current_user.id), method: :post %> 
 
+<h2 class="my-5 text-muted text-center">List of attendance</h2>
+
+<% Attendance.all.where(event_id: @event_id).each do | attendance | %>
+  
+  <ul class="btn btn-secondary">
+    <li><%= attendance.user.email %></li>
+  </ul>
+  <br>
+<% end %>
 

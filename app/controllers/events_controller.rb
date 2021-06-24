@@ -74,10 +74,10 @@ class EventsController < ApplicationController
   end
 
   def previous_events
-    Event.where("date < ?", Time.now)
+    Event.where('date < ?', Time.now)
   end
 
   def upcoming_events
-    Event.where("date >= ?", Time.now)
+    Event.where('date >= ?', Time.now)
   end
 end

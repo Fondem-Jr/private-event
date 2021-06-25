@@ -11,7 +11,12 @@
 
 <p id="notice"><%= notice %></p>
 
+<% if Attendance.where(event_id: @event.id).count > 1 %>
+You are already registered for this event
+<% else %>
 <%= link_to 'Register Attendance with your current account', attendances_path(event_id: params[:id], user_id: current_user.id), method: :post %> 
+<% end %>
+
 
 <h2 class="my-5 text-muted text-center">List of attendance</h2>
 

@@ -13,11 +13,11 @@
         <%= link_to 'Edit Profile', edit_user_registration_path, class:"nav-link" %>
         <%= link_to 'Create Event', new_event_path, class:"nav-link" %>
         <%= link_to 'View Events', events_path, class:"nav-link" %>
+        <%= link_to  'Past/Upcoming Events' , user_show_path, class:"nav-link" %>
         <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class:"nav-link" %>
         <% else %>
             <%= link_to 'Sign In', new_user_session_path, class:"nav-link" %>
             <%= link_to 'Sign Up', new_user_registration_path, class:"nav-link" %>
-
         <% end %>     
 
             

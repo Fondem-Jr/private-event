@@ -1,0 +1,123 @@
+<h1 class="text-center py-5">Your past and upcoming events created </h1>
+
+<%= link_to  'Back', root_path %>
+
+<h2 class="text-center text-muted"> Your Upcoming Events </h2>
+
+<table class="table table-hover table-bordered">
+  <thead class="table-dark">
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Date</th>
+      <th>Attendance expected</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+ <tbody>
+    
+    <%  @upcoming_events.each do |event| %>
+
+
+      <% if current_user %>
+      <tr>
+        <td><%= event.title %></td>
+        <td><%= event.description %></td>
+        <td><%= event.date %></td>
+        <% if Time.now > event.date %>
+          <td> Not available </td>
+        <% else %>
+          <td><%= Attendance.where(event_id: event.id).count %></td>
+        <% end %>
+        <td><%= link_to 'Show', event %></td>
+        <% if event.user_id == current_user.id %>
+        <td><%= link_to 'Edit', edit_event_path(event) %></td>
+        <td><%= link_to 'Destroy', event_path(event), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% else %>
+        <td></td>
+        <td></td>
+        <% end %>
+      </tr>
+      <% end %>
+    
+   
+  </tbody>
+
+<% end %>
+</table>
+
+<h2 class="text-center text-muted"> Your Past Events </h2>
+
+<table class="table table-hover table-bordered">
+  <thead class="table-dark">
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Date</th>
+      <th>Attendance expected</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+ <tbody>
+    
+    <% @past_events.each do |event| %>
+
+    
+
+      <% if current_user %>
+      <tr>
+        <td><%= event.title %></td>
+        <td><%= event.description %></td>
+        <td><%= event.date %></td>
+        <% if Time.now > event.date %>
+          <td> Not available </td>
+        <% else %>
+          <td><%= Attendance.where(event_id: event.id).count %></td>
+        <% end %>
+        <td><%= link_to 'Show', event %></td>
+        <% if event.user_id == current_user.id %>
+        <td><%= link_to 'Edit', edit_event_path(event) %></td>
+        <td><%= link_to 'Destroy', event_path(event), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% else %>
+        <td></td>
+        <td></td>
+        <% end %>
+      </tr>
+      
+    
+    <% end %>
+  </tbody>
+
+<% end %>
+</table>
+
+
+<h2 class="text-center text-muted"> Created Events </h2>
+
+<table class="table table-hover table-bordered">
+  <thead class="table-dark">
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+ <tbody>
+  <% @all_events.each do |event| %>
+      <tr>
+       <td><%= event.title %></td>
+        <td><%= event.description %></td>
+        <td><%= event.date %></td>
+        <td><%= link_to 'Show', event %></td>
+      </tr>
+  <% end %>
+
+  </tbody>
+</table>
+
+
+

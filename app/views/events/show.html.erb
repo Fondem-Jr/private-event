@@ -1,0 +1,33 @@
+<div class="jumbotron">
+  <h1 class="display-4"><%= @event.title %></h1>
+  <p class="lead"><strong>Description:</strong> <%= @event.description %></p>
+  <hr class="my-4">
+  <p><strong>Date:</strong> <%= @event.date %>.</p>
+  <p class="lead">
+    <%= link_to 'Back', events_path %>
+  </p>
+</div>
+
+
+<p id="notice"><%= notice %></p>
+<% if Time.now < @event.date %>
+  <% if Attendance.where(event_id: @event.id, user_id: current_user.id) != [] %>
+  You are already registered for this event
+  <% else %>
+  <%= link_to 'Register Attendance with your current account', attendances_path(event_id: params[:id], user_id: current_user.id), method: :post %> 
+  <% end %>
+<% else %>
+  Event finished...
+<% end %>
+
+
+<h2 class="my-5 text-muted text-center">List of attendance</h2>
+
+<% Attendance.all.where(event_id: @event_id).each do | attendance | %>
+  
+  <ul class="btn btn-secondary">
+    <li><%= attendance.user.email %></li>
+  </ul>
+  <br>
+<% end %>
+
